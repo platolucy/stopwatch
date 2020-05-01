@@ -1,6 +1,4 @@
-// A "Reset" button to reset the time back to 0.
 // The time display to show the number of seconds elapsed, rather than the actual time.
-
 const secondsElement = document.getElementById('seconds-elapsed')
 let seconds = 0
 let interval;
@@ -10,8 +8,10 @@ function displaySeconds() {
 }
 
 // A "Start" button to start the stopwatch running.
-document.getElementById('start').onclick = function() {
+const startButton = document.getElementById('start')
+startButton.onclick = function() {
     interval = setInterval(function() {
+        startButton.setAttribute('disabled', true)
         seconds++
         displaySeconds()
     }, 1000);
@@ -21,4 +21,11 @@ document.getElementById('start').onclick = function() {
 document.getElementById('stop').onclick = function() {
     //make intervals stop
     clearInterval(interval);
+    startButton.removeAttribute('disabled')
+}
+
+// A "Reset" button to reset the time back to 0.
+document.getElementById('reset').onclick = function () {
+    seconds = 0
+    displaySeconds()
 }
