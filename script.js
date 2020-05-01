@@ -4,6 +4,12 @@
 // The time display to show the number of seconds elapsed, rather than the actual time.
 
 const secondsElement = document.getElementById('seconds-elapsed')
-console.log(secondsElement);
+let seconds = 0
 
 // A "Start" button to start the stopwatch running.
+document.getElementById('start').onclick = function() {
+    setInterval(function() {
+        seconds++
+        secondsElement.innerText = seconds
+    }, 1000);
+}
